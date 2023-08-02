@@ -1,0 +1,21 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "li2283-18.members.linode.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "test_db",
+            "username": "postgres",
+            "database": "test_db",
+            "password": "CodingTemple4L.."
+        },
+        {
+            "previewLimit": 50,
+            "server": "rajje.db.elephantsql.com (rajje-01)",
+            "driver": "PostgreSQL",
+            "name": "Nutrition",
+            "connectString": "postgres://trcvdcnb:NwN3jAmsfzwNFf54cytI1Crd8LuBsY7u@rajje.db.elephantsql.com/trcvdcnb"
+        }
+    ]
+}
