@@ -27,3 +27,5 @@ class User(db.Model):
         self.carbohydrate=carbohydrate
         self.fat=fat
         self.protein=protein
+
+        
