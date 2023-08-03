@@ -1,6 +1,6 @@
 
 
-from flask import Blueprint, render_template, request, jsonify, json
+from flask import Blueprint, render_template, request, json
 
 from ..models import User, db
 
@@ -19,8 +19,13 @@ def submit_form():
         weight = int(data.get('weightPounds'))
         age = int(data.get('age'))
         gender = data.get('gender')
+        bmr = int(data.get('bmr'))
+        activity_factor = data.get('activityFactor')
+        carbohydrate = int(data.get('carbohydrate'))
+        fat = int(data.get('fat'))
+        protein = int(data.get('protein'))
 
-        
+
         user = User.query.filter_by(email=email).first()
         if not user:
             
@@ -31,11 +36,12 @@ def submit_form():
                 weight=weight,
                 age=age,
                 gender=gender,
-                calories=0,
-                carbohydrate=0,
-                fat=0,
-                protein=0
-            )
+                bmr=bmr,
+                activity_factor=activity_factor,
+                carbohydrate=carbohydrate,
+                fat=fat,
+                protein=protein
+                )
             db.session.add(user)
             db.session.commit()
         else:
@@ -44,6 +50,14 @@ def submit_form():
             user.weight = weight
             user.age = age
             user.gender = gender
+            user.bmr = bmr
+            user.activity_factor = activity_factor
+
+            print(bmr, activity_factor)
+            user.calories = bmr * activity_factor
+            user.carbohydrate = carbohydrate
+            user.fat = fat 
+            user.protein = protein
             db.session.commit()
 
         return {'message': 'Data submitted successfully!'}
