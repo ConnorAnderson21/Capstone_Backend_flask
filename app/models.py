@@ -32,4 +32,12 @@ class User(db.Model):
         self.fat=fat
         self.protein=protein
 
+    def to_dict(self):
+        return {
+            'calories':self.calories,
+            'carbohydrate':self.carbohydrate,
+            'fat':self.fat,
+            'protein':self.protein
+        }
+
         

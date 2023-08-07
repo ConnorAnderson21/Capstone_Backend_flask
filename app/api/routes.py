@@ -65,3 +65,29 @@ def submit_form():
     return {'message': 'Invalid request.'}
 
 
+@api.post('/get_macros')
+def get_macros():
+    data = request.get_json()
+    email = data['email']
+    user = User.query.filter_by(email=email).first()
+    return {
+        'status': "ok",
+        'user': user.to_dict()
+        }
+    
+
+# @api.route('/getMacros', methods=['POST'])
+# def getMacros():
+#     data = request.get_json()
+#     email = data['email']
+#     calories = data['calories']
+#     carbohydrate = data['carbohydrate']
+#     fat = data['fat']
+#     protein = data['protein']
+
+
+
+#     user = User.query.filter_by(email=email).first()
+
+
+    
